@@ -1,0 +1,134 @@
+main {
+    @include font;
+    display: block;
+    padding: 3vmin;
+    background: map-get($colores, secundario);
+}
+
+.main-contacto {
+    @include font;
+    display: block;
+    padding: 11vmin;
+    background: map-get($colores, secundario);
+}
+
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+#app {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    padding-bottom: 4vmin;
+    height: 90vh;
+    width: 100%;
+    color: map-get($colores, secundario);
+    background: map-get($colores, principal);
+    z-index: 100;
+}
+
+
+.title {
+    padding-left: 1em;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    font-size: 8vw;
+    width: 100%;
+    z-index: 2;
+    animation: outer-left 1s 1s ease both;
+    @extend .title-inner;
+}
+
+@keyframes text-clip {
+    from {
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+@keyframes outer-left {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+@keyframes inner-left {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+.cafe {
+    .cafe-inner {
+        display: inline-block;
+    }
+}
+
+.mozart {
+    display: inline-block;
+    width: 90%;
+}
+
+.cafe,
+.mozart {
+    animation: outer-left 1s 1s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+.title-inner {
+    display:grid;
+    animation: inner-rigth 1s 1s ease both;
+}
+
+.cafe-inner {
+    display: inline-block;
+    animation: inner-left 1s 1s ease both,
+    text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+.mozart-inner {
+
+    animation: text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+.image {
+    grid-row: 1;
+    grid-column: 2;
+    margin-left: 0.4rem;
+    opacity: 0.7;
+
+    animation: image-in 1s cubic-bezier(0.5, 0, 0.1, 1) 2s backwards;
+
+    @keyframes image-in {
+        from {
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        }
+
+        to {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+    }
+
+    img {
+        filter: opacity(30%);
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+main:active * {
+    animation: none !important;
+}

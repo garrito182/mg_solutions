@@ -1,0 +1,9 @@
+$colores: (
+    principal: #22222A,
+    secundario: #e6ded7,
+);
+
+@mixin font {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: map-get($colores, secundario);
+}
