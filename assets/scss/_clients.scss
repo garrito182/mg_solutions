@@ -1,27 +1,80 @@
-.grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+$animationSpeed: 20s;
 
+// Animation
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7))}
 }
 
-.grid__item {
-    background-color: transparent;
-    background-position: center center;
-    background-size: cover;
-    flex: auto;
-    text-align: center;
-    margin: 2px;
-    height: 130px;
 
-    @media screen and (min-width: 600px) {
-        flex-basis: 230px;
-    }
-/* 
-    @media screen and (min-width: 768px) {
-    flex-basis: 230px;
-    }  */
+// Styling
+.slider {
+	background: transparent;
+	box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+	height: 140px;
+	margin: auto;
+	overflow:hidden;
+	position: relative;
+	width: 80%;
+	display: flex;
+	
+	&::before,
+	&::after {
+		content: "";
+		height: 100px;
+		position: absolute;
+		width: 200px;
+		z-index: 2;
+	}
+	
+	&::after {
+		right: 0;
+		top: 0;
+		transform: rotateZ(180deg);
+	}
+
+	&::before {
+		left: 0;
+		top: 0;
+	}
+	
+	.slide-track {
+		animation: scroll $animationSpeed linear infinite;
+		display: flex;
+		width: calc(250px * 14);
+		align-items: center;
+		text-align: center;
+	}
+	
+	.slide {
+		text-align: center;
+		align-items: center;
+		width: 300px;
+	}
+}
+
+@media only screen and (max-width: 820px) {
+    .slider {
+		background: transparent;
+		box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+		height: 140px;
+		margin: auto;
+		overflow:hidden;
+		position: relative;
+		width: 80%;
+		display: flex;
+	}
+}
+
+@media only screen and (max-width: 391px) {
+    .slider {
+		background: transparent;
+		box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+		height: 140px;
+		margin: auto;
+		overflow:hidden;
+		position: relative;
+		width: 80%;
+		display: flex;
+	}
 }

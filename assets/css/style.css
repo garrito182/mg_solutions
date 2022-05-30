@@ -20,11 +20,6 @@ main {
   background: #e6ded7;
 }
 
-* {
-  position: relative;
-  box-sizing: border-box;
-}
-
 #app {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -94,12 +89,21 @@ main {
 }
 
 .cafe-inner {
+  font-size: 50px;
   display: inline-block;
   animation: inner-left 1s 1s ease both, text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
 }
 
+.cafe-inner h1 {
+  font-size: 70px;
+}
+
 .mozart-inner {
   animation: text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+.mozart-inner h4 {
+  font-size: 30px;
 }
 
 .image {
@@ -130,32 +134,112 @@ main:active * {
   animation: none !important;
 }
 
-.grid {
+@media only screen and (max-width: 820px) {
+  .cafe-inner h1 {
+    font-size: 70px;
+  }
+  .mozart-inner {
+    /* font-size: 30px; */
+  }
+  .mozart-inner h3 {
+    font-size: 50px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .cafe-inner h1 {
+    font-size: 35px;
+  }
+  .mozart-inner h3 {
+    font-size: 50px;
+  }
+}
+
+@media only screen and (max-width: 391px) {
+  .cafe-inner h1 {
+    font-size: 40px;
+  }
+  .mozart-inner h4 {
+    font-size: 15px;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+.slider {
+  background: transparent;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 140px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 80%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+}
+
+.slider::before, .slider::after {
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider .slide-track {
+  animation: scroll 20s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
   align-items: center;
-}
-
-.grid__item {
-  background-color: transparent;
-  background-position: center center;
-  background-size: cover;
-  flex: auto;
   text-align: center;
-  margin: 2px;
-  height: 130px;
-  /* 
-    @media screen and (min-width: 768px) {
-    flex-basis: 230px;
-    }  */
 }
 
-@media screen and (min-width: 600px) {
-  .grid__item {
-    flex-basis: 230px;
+.slider .slide {
+  text-align: center;
+  align-items: center;
+  width: 300px;
+}
+
+@media only screen and (max-width: 820px) {
+  .slider {
+    background: transparent;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+    height: 140px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 80%;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 391px) {
+  .slider {
+    background: transparent;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+    height: 140px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 80%;
+    display: flex;
   }
 }
 
@@ -176,7 +260,7 @@ main:active * {
   line-height: 48px;
   padding-bottom: 48px;
   background: #22222A;
-  -webkit-background-clip: text !important;
+  background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
 
@@ -345,7 +429,7 @@ footer.light .footer-copyright {
 
 .widget-title {
   margin-bottom: 20px;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .widget-title span {
@@ -426,21 +510,56 @@ ul.social-footer2 li a {
   transition: all 250ms ease-in-out 0s;
 }
 
-@media only screen and (max-width: 820px) {
+@media only screen and (max-width: 1280px) {
   .widget-title {
-    font-size: 10px;
+    font-size: 21px;
   }
   footer .main-footer {
     height: 100px;
   }
 }
 
-@media only screen and (max-width: 391px) {
+@media only screen and (max-width: 1024px) {
   .widget-title {
-    font-size: 10px;
+    font-size: 18px;
+  }
+  footer .main-footer {
+    height: 100px;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .widget-title {
+    font-size: 15px;
+  }
+  footer .main-footer {
+    height: 100px;
+  }
+}
+
+@media only screen and (max-width: 791px) {
+  .widget-title {
+    font-size: 15px;
+  }
+  footer .main-footer {
+    height: 90px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .widget-title {
+    font-size: 20px;
   }
   footer .main-footer {
     height: 350px;
   }
 }
-/*# sourceMappingURL=style.css.map */
+
+@media only screen and (max-width: 391px) {
+  .widget-title {
+    font-size: 15px;
+  }
+  footer .main-footer {
+    height: 300px;
+  }
+}
